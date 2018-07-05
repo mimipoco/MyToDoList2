@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">聯絡人</string>
+    <string name="title_activity_show">ShowActivity</string>
+</resources>
