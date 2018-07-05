@@ -9,7 +9,7 @@
         android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="type: 1記事,2收入,3支出" />
+        android:text="1收入,2支出,3記事" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,9 +26,11 @@
             app:srcCompat="@mipmap/amt" />
 
         <LinearLayout
+            android:id="@+id/itemBG"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
+            android:background="#caff91"
             android:orientation="vertical">
 
             <TextView

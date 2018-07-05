@@ -21,7 +21,6 @@
             android:name=".ShowActivity"
             android:label="@string/title_activity_show"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".test"></activity>
     </application>
 
 </manifest>

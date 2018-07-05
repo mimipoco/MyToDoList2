@@ -2,6 +2,7 @@ package com.macroviz.databasedemo;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,15 +11,34 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+
+    //color用
+    Spinner spinner;
+    ArrayAdapter<CharSequence> data;
+    ArrayList<ColorItem> colorItems;
+    SpinnerAdapter spinnerAdapter;
+    ArrayList<String> color_tickets;
+    String[] color_names, color_codes;
+    LinearLayout itembg;
+    TextView textView5;
+    ImageView imageView;
+    //
+
     private DbAdapter dbAdapter;
     Button btna;
     TextView no_contact;
@@ -29,6 +49,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //color用
+        spinner = findViewById(R.id.spinner);
+        //ArrayAdapter<CharSequence> data = ArrayAdapter.createFromResource(
+        //this, R.array.items, android.R.layout.simple_spinner_item );
+        //spinner.setAdapter(data);
+
+        colorItems = new ArrayList<ColorItem>();
+        colorItems.add(new ColorItem("Red","#ff0000"));
+        colorItems.add(new ColorItem("Green","#00c7a4"));
+        colorItems.add(new ColorItem("Blue","#4b7bd8"));
+       // colorItems.add(new ColorItem("Purple","#cf97ca"));
+        spinnerAdapter = new SpinnerAdapter(this,colorItems);
+        spinner.setAdapter(spinnerAdapter);
+        //
+        itembg = findViewById(R.id.itemBG);
+        //itembg.setBackgroundColor(Color.RED);
+        textView5=findViewById(R.id.textView5);
+        //textView5.setBackgroundColor(Color.parseColor(  ));
+
+        imageView =findViewById(R.id.imageView);
+
+
+        //
 
         dbAdapter = new DbAdapter(this);
         Log.i("dbCount=",String.valueOf(dbAdapter.listContacts().getCount()));
